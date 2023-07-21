@@ -1,0 +1,19 @@
+Información del Proyecto:
+
+Desarrolladores:
+- Carlos Gonzalez [20-70-5162]
+- Julio Navas []
+- Thomas Solís []
+
+Fecha: 21/07/2023
+
+Nombre del Proyecto: Proyecto Final Sistemas Operativos - Sistema de Encuestas 
+
+Dependencias y Tecnologías Utilizadas:
+- Flask
+- Matplotlib
+- Pandas
+- Docker
+- Nginx
+- VsCode
+- Ngrok

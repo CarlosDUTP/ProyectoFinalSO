@@ -1,0 +1,13 @@
+docker stop app_instance_1 app_instance_2 nginx_reverse_proxy
+docker rm app_instance_1 app_instance_2 nginx_reverse_proxy  
+docker build -t encuesta_app_image -f Dockerfile .
+docker run -d -p 8000:8000 --name app_instance_1 encuesta_app_image
+docker run -d -p 8001:8000 --name app_instance_2 encuesta_app_image
+cd nginx
+docker build -t nginx_reverse_proxy_image -f Dockerfile_nginx .
+docker run -d -p 80:80 --link app_instance_1 --link app_instance_2 --name nginx_reverse_proxy nginx_reverse_proxy_image
+docker ps		docker ps -a 
+docker pull ngrok/ngrok
+docker run -it -e NGROK_AUTHTOKEN=2Sm6cQxzGi6rf5nXs80WjfIKt6Z_61aDy9NXaPSNVCJPJY5EZ ngrok/ngrok http 80 --domain=blindly-living-maggot.ngrok-free.app
+
+blindly-living-maggot.ngrok-free.app

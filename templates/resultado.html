@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados de la Encuesta</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Resultados de la Encuesta</h1>
+        <div class="resultados">
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+
+    <!-- Incluir la librería Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Código JavaScript para generar la gráfica -->
+    <script>
+        const respuestas = JSON.parse('{{ respuestas | tojson | escape }}');
+        
+        const labels = Object.keys(respuestas);
+        const data = Object.values(respuestas);
+
+        // Generar la gráfica de dona
+        const ctx = document.getElementById('chart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: ['red', 'green', 'blue', 'orange'],
+                }]
+            },
+        });
+    </script>
+</body>
+</html>
